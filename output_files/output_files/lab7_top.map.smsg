@@ -1,0 +1,5 @@
+Warning (10273): Verilog HDL warning at lab7_top.sv(47): extended using "x" or "z" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 47
+Warning (10273): Verilog HDL warning at lab7_top.sv(56): extended using "x" or "z" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 56
+Warning (10268): Verilog HDL information at lab7_top.sv(108): always construct contains both blocking and non-blocking assignments File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 108
+Warning (10268): Verilog HDL information at inDecoder.sv(34): always construct contains both blocking and non-blocking assignments File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv Line: 34
+Info (10281): Verilog HDL Declaration information at datapath.sv(4): object "shift" differs only in case from object "SHIFT" in the same scope File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 4

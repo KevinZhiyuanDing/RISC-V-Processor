@@ -1,0 +1,743 @@
+Analysis & Synthesis report for lab7_top
+Mon Nov 25 17:34:19 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |lab7_top|cpu:CPU|stateMachine:sm|state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for RAM:MEM|altsyncram:mem_rtl_0|altsyncram_adr1:auto_generated
+ 16. Parameter Settings for User Entity Instance: RAM:MEM
+ 17. Parameter Settings for Inferred Entity Instance: RAM:MEM|altsyncram:mem_rtl_0
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Port Connectivity Checks: "cpu:CPU|stateMachine:sm"
+ 20. Port Connectivity Checks: "cpu:CPU"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Nov 25 17:34:19 2024       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; lab7_top                                    ;
+; Top-level Entity Name           ; lab7_top                                    ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 250                                         ;
+; Total pins                      ; 66                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 4,096                                       ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; lab7_top           ; lab7_top           ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                   ;
++---------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path      ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                 ; Library ;
++---------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
+; stateMachine.sv                       ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/stateMachine.sv                        ;         ;
+; shifter.sv                            ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/shifter.sv                             ;         ;
+; regfile.sv                            ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/regfile.sv                             ;         ;
+; lab7_top.sv                           ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv                            ;         ;
+; inDecoder.sv                          ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv                           ;         ;
+; datapath.sv                           ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv                            ;         ;
+; cpu.sv                                ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv                                 ;         ;
+; alu.sv                                ; yes             ; User SystemVerilog HDL File                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/alu.sv                                 ;         ;
+; altsyncram.tdf                        ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc                 ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                           ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                        ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal181.inc                        ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
+; a_rdenreg.inc                         ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                            ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                            ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                          ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_adr1.tdf                ; yes             ; Auto-Generated Megafunction                           ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/db/altsyncram_adr1.tdf                 ;         ;
+; db/lab7_top.ram0_RAM_435e26e7.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/cpen211/lab-7-l1c-KevinZhiyuanDing/db/lab7_top.ram0_RAM_435e26e7.hdl.mif  ;         ;
++---------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimate of Logic utilization (ALMs needed) ; 170          ;
+;                                             ;              ;
+; Combinational ALUT usage for logic          ; 218          ;
+;     -- 7 input functions                    ; 8            ;
+;     -- 6 input functions                    ; 80           ;
+;     -- 5 input functions                    ; 25           ;
+;     -- 4 input functions                    ; 39           ;
+;     -- <=3 input functions                  ; 66           ;
+;                                             ;              ;
+; Dedicated logic registers                   ; 250          ;
+;                                             ;              ;
+; I/O pins                                    ; 66           ;
+; Total MLAB memory bits                      ; 0            ;
+; Total block memory bits                     ; 4096         ;
+;                                             ;              ;
+; Total DSP Blocks                            ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; KEY[0]~input ;
+; Maximum fan-out                             ; 266          ;
+; Total fan-out                               ; 2000         ;
+; Average fan-out                             ; 3.25         ;
++---------------------------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                   ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------+-----------------+--------------+
+; |lab7_top                                 ; 218 (25)            ; 250 (8)                   ; 4096              ; 0          ; 66   ; 0            ; |lab7_top                                                             ; lab7_top        ; work         ;
+;    |RAM:MEM|                              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |lab7_top|RAM:MEM                                                     ; RAM             ; work         ;
+;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |lab7_top|RAM:MEM|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_adr1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |lab7_top|RAM:MEM|altsyncram:mem_rtl_0|altsyncram_adr1:auto_generated ; altsyncram_adr1 ; work         ;
+;    |cpu:CPU|                              ; 193 (16)            ; 242 (33)                  ; 0                 ; 0          ; 0    ; 0            ; |lab7_top|cpu:CPU                                                     ; cpu             ; work         ;
+;       |datapath:DP|                       ; 124 (34)            ; 176 (48)                  ; 0                 ; 0          ; 0    ; 0            ; |lab7_top|cpu:CPU|datapath:DP                                         ; datapath        ; work         ;
+;          |ALU:ALU|                        ; 34 (34)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab7_top|cpu:CPU|datapath:DP|ALU:ALU                                 ; ALU             ; work         ;
+;          |regfile:REGFILE|                ; 56 (56)             ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |lab7_top|cpu:CPU|datapath:DP|regfile:REGFILE                         ; regfile         ; work         ;
+;       |inDecoder:dec|                     ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab7_top|cpu:CPU|inDecoder:dec                                       ; inDecoder       ; work         ;
+;       |stateMachine:sm|                   ; 49 (49)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |lab7_top|cpu:CPU|stateMachine:sm                                     ; stateMachine    ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                            ;
++------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+; Name                                                                   ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                   ;
++------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+; RAM:MEM|altsyncram:mem_rtl_0|altsyncram_adr1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 16           ; 256          ; 16           ; 4096 ; db/lab7_top.ram0_RAM_435e26e7.hdl.mif ;
++------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |lab7_top|cpu:CPU|stateMachine:sm|state                                                                                                                                                                                                                                                                                                                                                                                                                                   ;
++----------------+--------------+------------+----------------+-----------+-----------+-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-----------+
+; Name           ; state.Decode ; state.HALT ; state.UpdatePC ; state.IF2 ; state.IF1 ; state.mov_1 ; state.str5 ; state.str4 ; state.str3 ; state.str2 ; state.str1 ; state.ldr6 ; state.ldr5 ; state.ldr4 ; state.ldr3 ; state.ldr2 ; state.ldr1 ; state.and4 ; state.and3 ; state.and2 ; state.and1 ; state.cmp3 ; state.cmp2 ; state.cmp1 ; state.add4 ; state.add3 ; state.add2 ; state.add1 ; state.mvn3 ; state.mvn2 ; state.mvn1 ; state.mov3 ; state.mov2 ; state.mov1 ; state.RST ;
++----------------+--------------+------------+----------------+-----------+-----------+-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-----------+
+; state.RST      ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0         ;
+; state.mov1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 1         ;
+; state.mov2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 1         ;
+; state.mov3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 1         ;
+; state.mvn1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 1         ;
+; state.mvn2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.mvn3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.add1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.add2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.add3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.add4     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.cmp1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.cmp2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.cmp3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.and1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.and2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.and3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.and4     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.ldr1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.ldr2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.ldr3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.ldr4     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.ldr5     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.ldr6     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.str1     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.str2     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.str3     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.str4     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.str5     ; 0            ; 0          ; 0              ; 0         ; 0         ; 0           ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.mov_1    ; 0            ; 0          ; 0              ; 0         ; 0         ; 1           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.IF1      ; 0            ; 0          ; 0              ; 0         ; 1         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.IF2      ; 0            ; 0          ; 0              ; 1         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.UpdatePC ; 0            ; 0          ; 1              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.HALT     ; 0            ; 1          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
+; state.Decode   ; 1            ; 0          ; 0              ; 0         ; 0         ; 0           ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1         ;
++----------------+--------------+------------+----------------+-----------+-----------+-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-----------+
+
+
++-------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                        ;
++----------------------------------------+--------------------------------------------------+
+; Register name                          ; Reason for Removal                               ;
++----------------------------------------+--------------------------------------------------+
+; LEDR[8]~reg0                           ; Stuck at GND due to stuck port data_in           ;
+; LEDR[9]~reg0                           ; Stuck at GND due to stuck port data_in           ;
+; cpu:CPU|datapath:DP|C[0]               ; Merged with cpu:CPU|datapath:DP|datapath_out[0]  ;
+; cpu:CPU|datapath:DP|C[1]               ; Merged with cpu:CPU|datapath:DP|datapath_out[1]  ;
+; cpu:CPU|datapath:DP|C[2]               ; Merged with cpu:CPU|datapath:DP|datapath_out[2]  ;
+; cpu:CPU|datapath:DP|C[3]               ; Merged with cpu:CPU|datapath:DP|datapath_out[3]  ;
+; cpu:CPU|datapath:DP|C[4]               ; Merged with cpu:CPU|datapath:DP|datapath_out[4]  ;
+; cpu:CPU|datapath:DP|C[5]               ; Merged with cpu:CPU|datapath:DP|datapath_out[5]  ;
+; cpu:CPU|datapath:DP|C[6]               ; Merged with cpu:CPU|datapath:DP|datapath_out[6]  ;
+; cpu:CPU|datapath:DP|C[7]               ; Merged with cpu:CPU|datapath:DP|datapath_out[7]  ;
+; cpu:CPU|datapath:DP|C[8]               ; Merged with cpu:CPU|datapath:DP|datapath_out[8]  ;
+; cpu:CPU|datapath:DP|C[9]               ; Merged with cpu:CPU|datapath:DP|datapath_out[9]  ;
+; cpu:CPU|datapath:DP|C[10]              ; Merged with cpu:CPU|datapath:DP|datapath_out[10] ;
+; cpu:CPU|datapath:DP|C[11]              ; Merged with cpu:CPU|datapath:DP|datapath_out[11] ;
+; cpu:CPU|datapath:DP|C[12]              ; Merged with cpu:CPU|datapath:DP|datapath_out[12] ;
+; cpu:CPU|datapath:DP|C[13]              ; Merged with cpu:CPU|datapath:DP|datapath_out[13] ;
+; cpu:CPU|datapath:DP|C[14]              ; Merged with cpu:CPU|datapath:DP|datapath_out[14] ;
+; cpu:CPU|datapath:DP|C[15]              ; Merged with cpu:CPU|datapath:DP|datapath_out[15] ;
+; cpu:CPU|stateMachine:sm|state~33       ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state~34       ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state~35       ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state~36       ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state~37       ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state~38       ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state.HALT     ; Lost fanout                                      ;
+; cpu:CPU|stateMachine:sm|state.ldr6     ; Stuck at GND due to stuck port data_in           ;
+; Total Number of Removed Registers = 26 ;                                                  ;
++----------------------------------------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                    ;
++----------------------------------+--------------------+----------------------------------------+
+; Register name                    ; Reason for Removal ; Registers Removed due to This Register ;
++----------------------------------+--------------------+----------------------------------------+
+; cpu:CPU|stateMachine:sm|state~33 ; Lost Fanouts       ; cpu:CPU|stateMachine:sm|state.HALT     ;
++----------------------------------+--------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 250   ;
+; Number of registers using Synchronous Clear  ; 10    ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 217   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions   ;
++---------------------+-------------------+------+
+; Register Name       ; Megafunction      ; Type ;
++---------------------+-------------------+------+
+; RAM:MEM|dout[0..15] ; RAM:MEM|mem_rtl_0 ; RAM  ;
++---------------------+-------------------+------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |lab7_top|cpu:CPU|datapath:DP|datapath_out[10]            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |lab7_top|cpu:CPU|datapath:DP|regfile:REGFILE|tmpWrite[4] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |lab7_top|cpu:CPU|datapath:DP|regfile:REGFILE|tmpWrite[2] ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |lab7_top|cpu:CPU|datapath:DP|Mux1                        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |lab7_top|cpu:CPU|datapath:DP|Mux11                       ;
+; 5:1                ; 14 bits   ; 42 LEs        ; 28 LEs               ; 14 LEs                 ; No         ; |lab7_top|cpu:CPU|datapath:DP|Bin[14]                     ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |lab7_top|cpu:CPU|inDecoder:dec|Mux5                      ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |lab7_top|cpu:CPU|datapath:DP|regfile:REGFILE|Mux3        ;
+; 9:1                ; 9 bits    ; 54 LEs        ; 45 LEs               ; 9 LEs                  ; No         ; |lab7_top|cpu:CPU|stateMachine:sm|state                   ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; No         ; |lab7_top|cpu:CPU|stateMachine:sm|state                   ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |lab7_top|cpu:CPU|stateMachine:sm|nsel[0]                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Source assignments for RAM:MEM|altsyncram:mem_rtl_0|altsyncram_adr1:auto_generated ;
++---------------------------------+--------------------+------+----------------------+
+; Assignment                      ; Value              ; From ; To                   ;
++---------------------------------+--------------------+------+----------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                    ;
++---------------------------------+--------------------+------+----------------------+
+
+
++------------------------------------------------------+
+; Parameter Settings for User Entity Instance: RAM:MEM ;
++----------------+----------+--------------------------+
+; Parameter Name ; Value    ; Type                     ;
++----------------+----------+--------------------------+
+; data_width     ; 16       ; Signed Integer           ;
+; addr_width     ; 8        ; Signed Integer           ;
+; filename       ; data.txt ; String                   ;
++----------------+----------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: RAM:MEM|altsyncram:mem_rtl_0               ;
++------------------------------------+---------------------------------------+----------------+
+; Parameter Name                     ; Value                                 ; Type           ;
++------------------------------------+---------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                     ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                    ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                   ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                    ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                   ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                     ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                             ; Untyped        ;
+; WIDTH_A                            ; 16                                    ; Untyped        ;
+; WIDTHAD_A                          ; 8                                     ; Untyped        ;
+; NUMWORDS_A                         ; 256                                   ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                          ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                  ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WIDTH_B                            ; 16                                    ; Untyped        ;
+; WIDTHAD_B                          ; 8                                     ; Untyped        ;
+; NUMWORDS_B                         ; 256                                   ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                          ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                     ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                     ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                  ; Untyped        ;
+; BYTE_SIZE                          ; 8                                     ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                              ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; INIT_FILE                          ; db/lab7_top.ram0_RAM_435e26e7.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                     ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                 ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                 ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                     ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                             ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_adr1                       ; Untyped        ;
++------------------------------------+---------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                         ;
++-------------------------------------------+------------------------------+
+; Name                                      ; Value                        ;
++-------------------------------------------+------------------------------+
+; Number of entity instances                ; 1                            ;
+; Entity Instance                           ; RAM:MEM|altsyncram:mem_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                    ;
+;     -- WIDTH_A                            ; 16                           ;
+;     -- NUMWORDS_A                         ; 256                          ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                 ;
+;     -- WIDTH_B                            ; 16                           ;
+;     -- NUMWORDS_B                         ; 256                          ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                     ;
++-------------------------------------------+------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu:CPU|stateMachine:sm"                                                                                 ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; W    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu:CPU"                                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; N    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; V    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Z    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 250                         ;
+;     ENA               ; 193                         ;
+;     ENA SCLR          ; 8                           ;
+;     ENA SLD           ; 16                          ;
+;     SCLR              ; 2                           ;
+;     plain             ; 31                          ;
+; arriav_lcell_comb     ; 219                         ;
+;     arith             ; 25                          ;
+;         1 data inputs ; 9                           ;
+;         5 data inputs ; 16                          ;
+;     extend            ; 8                           ;
+;         7 data inputs ; 8                           ;
+;     normal            ; 186                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 29                          ;
+;         3 data inputs ; 28                          ;
+;         4 data inputs ; 39                          ;
+;         5 data inputs ; 9                           ;
+;         6 data inputs ; 80                          ;
+; boundary_port         ; 66                          ;
+; stratixv_ram_block    ; 16                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.50                        ;
+; Average LUT depth     ; 2.46                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Mon Nov 25 17:34:05 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab7 -c lab7_top
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file statemachine.sv
+    Info (12023): Found entity 1: stateMachine File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/stateMachine.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file shifter.sv
+    Info (12023): Found entity 1: shifter File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/shifter.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file regfile.sv
+    Info (12023): Found entity 1: regfile File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/regfile.sv Line: 1
+Info (12021): Found 4 design units, including 4 entities, in source file lab7_top.sv
+    Info (12023): Found entity 1: lab7_top File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 1
+    Info (12023): Found entity 2: RAM File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 69
+    Info (12023): Found entity 3: vDFF File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 93
+    Info (12023): Found entity 4: sseg File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 104
+Info (12021): Found 1 design units, including 1 entities, in source file indecoder.sv
+    Info (12023): Found entity 1: inDecoder File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file datapath.sv
+    Info (12023): Found entity 1: datapath File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cpu.sv
+    Info (12023): Found entity 1: cpu File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu.sv
+    Info (12023): Found entity 1: ALU File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/alu.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at inDecoder.sv(25): created implicit net for "op" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv Line: 25
+Warning (10236): Verilog HDL Implicit Net warning at cpu.sv(35): created implicit net for "s" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv Line: 35
+Info (12127): Elaborating entity "lab7_top" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at lab7_top.sv(37): truncated value with size 32 to match size of target (1) File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 37
+Warning (10230): Verilog HDL assignment warning at lab7_top.sv(40): truncated value with size 32 to match size of target (1) File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 40
+Warning (10230): Verilog HDL assignment warning at lab7_top.sv(43): truncated value with size 32 to match size of target (1) File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 43
+Warning (10034): Output port "HEX0" at lab7_top.sv(5) has no driver File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Warning (10034): Output port "HEX1" at lab7_top.sv(5) has no driver File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Warning (10034): Output port "HEX2" at lab7_top.sv(5) has no driver File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Warning (10034): Output port "HEX3" at lab7_top.sv(5) has no driver File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Warning (10034): Output port "HEX4" at lab7_top.sv(5) has no driver File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Warning (10034): Output port "HEX5" at lab7_top.sv(5) has no driver File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Info (12128): Elaborating entity "cpu" for hierarchy "cpu:CPU" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 30
+Warning (10230): Verilog HDL assignment warning at cpu.sv(57): truncated value with size 9 to match size of target (8) File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv Line: 57
+Info (12128): Elaborating entity "inDecoder" for hierarchy "cpu:CPU|inDecoder:dec" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv Line: 32
+Warning (10036): Verilog HDL or VHDL warning at inDecoder.sv(25): object "op" assigned a value but never read File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv Line: 25
+Warning (10230): Verilog HDL assignment warning at inDecoder.sv(25): truncated value with size 2 to match size of target (1) File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv Line: 25
+Info (10264): Verilog HDL Case Statement information at inDecoder.sv(34): all case item expressions in this case statement are onehot File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/inDecoder.sv Line: 34
+Info (12128): Elaborating entity "stateMachine" for hierarchy "cpu:CPU|stateMachine:sm" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv Line: 38
+Info (10264): Verilog HDL Case Statement information at stateMachine.sv(33): all case item expressions in this case statement are onehot File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/stateMachine.sv Line: 33
+Info (12128): Elaborating entity "datapath" for hierarchy "cpu:CPU|datapath:DP" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/cpu.sv Line: 45
+Info (12128): Elaborating entity "regfile" for hierarchy "cpu:CPU|datapath:DP|regfile:REGFILE" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 16
+Warning (10230): Verilog HDL assignment warning at regfile.sv(12): truncated value with size 32 to match size of target (8) File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/regfile.sv Line: 12
+Info (12128): Elaborating entity "ALU" for hierarchy "cpu:CPU|datapath:DP|ALU:ALU" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 22
+Info (12128): Elaborating entity "shifter" for hierarchy "cpu:CPU|datapath:DP|shifter:SHIFT" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 27
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:MEM" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 52
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13048): Converted tri-state node "read_data[15]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[14]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[13]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[12]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[11]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[10]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[9]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[8]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[7]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[6]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[5]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[4]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[3]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[2]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[1]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+    Warning (13048): Converted tri-state node "read_data[0]" into a selector File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/datapath.sv Line: 40
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "RAM:MEM|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/lab7_top.ram0_RAM_435e26e7.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "RAM:MEM|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "RAM:MEM|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/lab7_top.ram0_RAM_435e26e7.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_adr1.tdf
+    Info (12023): Found entity 1: altsyncram_adr1 File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/db/altsyncram_adr1.tdf Line: 27
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 60
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 60
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 5
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/cpen211/lab-7-l1c-KevinZhiyuanDing/output_files/lab7_top.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 4 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 2
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 2
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 3
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/cpen211/lab-7-l1c-KevinZhiyuanDing/lab7_top.sv Line: 3
+Info (21057): Implemented 478 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 396 logic cells
+    Info (21064): Implemented 16 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 84 warnings
+    Info: Peak virtual memory: 4899 megabytes
+    Info: Processing ended: Mon Nov 25 17:34:19 2024
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:11
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/cpen211/lab-7-l1c-KevinZhiyuanDing/output_files/lab7_top.map.smsg.
+
+
