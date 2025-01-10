@@ -1,2 +1,2 @@
 # RISC-Machine
-Reduced Instruction Set Computer Processor Implemented in SystemVerilog
+This project is an implementation of a 32-bit, RISC-V ISA based processor in SystemVerilog.
