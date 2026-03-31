@@ -1,6 +1,6 @@
 # RISC-V Processor
 
-This repository contains an implementation of a modified RISC-V processor in SystemVerilog. The project includes both RTL (Register-Transfer Level) and gate-level verification to ensure the processor's functionality and performance.
+This repository contains an implementation of a modified RISC-V processor in SystemVerilog. The project includes RTL (Register-Transfer Level) verification to ensure the processor's functionality and performance.
 
 ## Features
 - **Processor Architecture**: Implements the RISC-V instruction set.
